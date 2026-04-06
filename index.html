@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Vasu Pilla, vasu pilla portfolio, vasu pilla resume, vasupilla, vasu cybersecurity, ethical hacker, CEH" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vasu Pilla | Cybersecurity Portfolio</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      :root {
+        --bg: #0a0f1e;
+        --bg2: #0e1628;
+        --accent: #00c8ff;
+        --accent2: #7b2ff7;
+        --text: #cdd6f4;
+        --text-dim: #8892b0;
+        --white: #ffffff;
+        --card-bg: rgba(14,22,40,0.9);
+        --border: rgba(0,200,255,0.15);
+      }
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: var(--bg); }
+      ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+      /* SCROLL TO TOP */
+      .scrollToTop-btn {
+        position: fixed; bottom: 30px; right: 30px;
+        width: 45px; height: 45px;
+        background: var(--accent); color: #000;
+        border-radius: 4px; display: none;
+        align-items: center; justify-content: center;
+        font-size: 1.2rem; cursor: pointer; z-index: 999;
+        box-shadow: 0 0 14px rgba(0,200,255,0.5);
+        transition: background .3s;
+      }
+      .scrollToTop-btn:hover { background: var(--accent2); color: #fff; }
+      .scrollToTop-btn.show { display: flex; }
+
+      /* HEADER */
+      header {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 5%; height: 65px;
+        background: rgba(10,15,30,0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+      }
+      .logo { font-size: 1.2rem; font-weight: 700; color: var(--accent); text-decoration: none; letter-spacing: 2px; }
+      #menu { font-size: 1.3rem; color: var(--accent); cursor: pointer; display: none; }
+      .navbar ul { list-style: none; display: flex; gap: 2rem; }
+      .navbar ul li a {
+        text-decoration: none; color: var(--text-dim);
+        font-size: .9rem; font-weight: 600;
+        letter-spacing: 1px; text-transform: uppercase;
+        transition: color .3s; position: relative;
+      }
+      .navbar ul li a::after {
+        content: ''; position: absolute; bottom: -4px; left: 0;
+        width: 0; height: 2px; background: var(--accent); transition: width .3s;
+      }
+      .navbar ul li a:hover, .navbar ul li a.active { color: var(--accent); }
+      .navbar ul li a:hover::after, .navbar ul li a.active::after { width: 100%; }
+
+      /* MAIN / HERO */
+      .main {
+        min-height: 100vh; display: flex; align-items: center;
+        padding: 0 8%;
+        background: linear-gradient(135deg, #0a0f1e 0%, #0e1628 60%, #12002a 100%);
+        position: relative; overflow: hidden;
+      }
+      .main::before {
+        content: ''; position: absolute; inset: 0;
+        background: radial-gradient(ellipse at 70% 50%, rgba(123,47,247,.12) 0%, transparent 60%);
+        pointer-events: none;
+      }
+      .main .content { padding-top: 65px; }
+      .main .content h2 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 400; color: var(--white); line-height: 1.2; }
+      .main .content h2 span { font-weight: 800; color: var(--accent); display: block; }
+      .animated-text { font-size: clamp(1rem,2.5vw,1.4rem); color: var(--text-dim); margin: 1rem 0 2rem; height: 2em; }
+      #typed-output { color: var(--accent2); font-weight: 600; }
+      #typed-cursor { color: var(--accent); animation: blink 1s step-end infinite; }
+      @keyframes blink { 50%{opacity:0;} }
+
+      .btn {
+        display: inline-block; padding: .75rem 2rem;
+        background: transparent; color: var(--accent);
+        border: 2px solid var(--accent); border-radius: 4px;
+        text-decoration: none; font-weight: 700;
+        font-size: .9rem; letter-spacing: 1.5px; text-transform: uppercase;
+        transition: all .3s; cursor: pointer;
+      }
+      .btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px rgba(0,200,255,.4); }
+
+      .media-icons { margin-top: 2rem; display: flex; gap: 1rem; }
+      .media-icons a {
+        width: 40px; height: 40px; border: 1px solid var(--border);
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        color: var(--text-dim); text-decoration: none;
+        font-size: .9rem; transition: all .3s;
+      }
+      .media-icons a:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+
+      /* SECTIONS */
+      section { padding: 90px 8%; }
+      .title { text-align: center; margin-bottom: 3rem; }
+      .section-title {
+        font-size: clamp(1.8rem,3vw,2.5rem); font-weight: 800; color: var(--white);
+        position: relative; display: inline-block;
+      }
+      .section-title::after {
+        content: ''; display: block; width: 60%; height: 3px;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        margin: .5rem auto 0; border-radius: 2px;
+      }
+      .title p { color: var(--text-dim); margin-top: 1rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+      .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s; }
+      .reveal.active { opacity: 1; transform: none; }
+
+      /* ABOUT */
+      .about { background: var(--bg2); }
+      .about .content { display: flex; gap: 4rem; align-items: center; flex-wrap: wrap; }
+      .col-left { flex: 1; min-width: 260px; }
+      .col-right { flex: 2; min-width: 280px; }
+      .img-card {
+        border-radius: 8px; overflow: hidden;
+        border: 2px solid var(--border);
+        box-shadow: 0 0 30px rgba(0,200,255,.1);
+        background: var(--card-bg);
+        aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+        font-size: 6rem; color: var(--accent);
+      }
+      .img-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .content-title { font-size: 1.6rem; font-weight: 800; color: var(--white); margin-bottom: 1rem; }
+      .paragraph-text { color: var(--text-dim); line-height: 1.8; margin-bottom: 1.5rem; }
+
+      /* SKILLS */
+      .skills { background: var(--bg); }
+      .skills .content { display: flex; gap: 4rem; flex-wrap: wrap; }
+      .bar { margin-bottom: 1.2rem; }
+      .bar .info { display: flex; justify-content: space-between; margin-bottom: .4rem; }
+      .bar .info span { font-size: .9rem; color: var(--text-dim); font-weight: 600; }
+      .bar .info span:last-child { color: var(--accent); }
+      .line {
+        height: 6px; border-radius: 3px;
+        background: rgba(255,255,255,.07);
+        position: relative; overflow: hidden;
+      }
+      .line::after {
+        content: ''; position: absolute; top: 0; left: 0; height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        border-radius: 3px; width: 0; transition: width 1.2s ease;
+      }
+      .line.python::after   { width: 85%; }
+      .line.netsec::after   { width: 90%; }
+      .line.pentest::after  { width: 88%; }
+      .line.malware::after  { width: 80%; }
+      .line.siem::after     { width: 82%; }
+      .line.os::after       { width: 92%; }
+
+      /* SERVICES */
+      .services { background: var(--bg2); }
+      .services .content { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+      .services .card {
+        flex: 1; min-width: 240px; max-width: 320px;
+        background: var(--card-bg); border: 1px solid var(--border);
+        border-radius: 8px; padding: 2rem; text-align: center; transition: all .3s;
+      }
+      .services .card:hover { transform: translateY(-8px); box-shadow: 0 0 30px rgba(0,200,255,.15); border-color: var(--accent); }
+      .service-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
+      .services .card .info h3 { color: var(--white); font-size: 1.1rem; margin-bottom: .75rem; }
+      .services .card .info p { color: var(--text-dim); font-size: .9rem; line-height: 1.7; }
+
+      /* PROJECTS */
+      .projects { background: var(--bg); }
+      .proj {
+        font-size: clamp(1.8rem,3vw,2.5rem); font-weight: 800; color: var(--white);
+        text-align: center; margin-bottom: 2.5rem; position: relative;
+      }
+      .proj::after {
+        content: ''; display: block; width: 60px; height: 3px;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        margin: .5rem auto 0; border-radius: 2px;
+      }
+      .carousel .card {
+        background: var(--card-bg); border: 1px solid var(--border);
+        border-radius: 8px; overflow: hidden; margin: 0 10px; transition: all .3s;
+      }
+      .carousel .card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 0 24px rgba(0,200,255,.12); }
+      .carousel .card .box { padding: 1.75rem; }
+      .carousel .card .box .text { font-size: 1rem; font-weight: 700; color: var(--accent); margin-bottom: .75rem; }
+      .carousel .card .box p { color: var(--text-dim); font-size: .88rem; line-height: 1.7; }
+
+      /* CONTACT */
+      .contact { background: var(--bg2); }
+      .contact .row { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+      .contact .card {
+        flex: 1; min-width: 200px; max-width: 250px;
+        background: var(--card-bg); border: 1px solid var(--border);
+        border-radius: 8px; padding: 1.5rem;
+        display: flex; gap: 1rem; align-items: flex-start; transition: all .3s;
+      }
+      .contact .card:hover { border-color: var(--accent); box-shadow: 0 0 20px rgba(0,200,255,.1); transform: translateY(-4px); }
+      .contact-icon { font-size: 1.4rem; color: var(--accent); margin-top: .2rem; }
+      .contact .card .info h3 { color: var(--white); font-size: .9rem; margin-bottom: .3rem; }
+      .contact .card .info span { color: var(--text-dim); font-size: .82rem; word-break: break-all; }
+
+      /* FOOTER */
+      .footer {
+        background: rgba(5,8,18,.95); border-top: 1px solid var(--border);
+        padding: 1.5rem 8%;
+        display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+      }
+      .footer-title { font-size: 1.1rem; font-weight: 800; color: var(--accent); letter-spacing: 2px; }
+      .footer p { color: var(--text-dim); font-size: .82rem; }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .navbar { display: none; }
+        .navbar.open { display: block; position: absolute; top: 65px; left: 0; right: 0; background: rgba(10,15,30,.97); border-bottom: 1px solid var(--border); padding: 1rem 0; }
+        .navbar.open ul { flex-direction: column; align-items: center; gap: 1.2rem; }
+        #menu { display: block; }
+        .about .content, .skills .content { flex-direction: column; }
+        section { padding: 70px 5%; }
+      }
+    </style>
+</head>
+<body>
+
+    <div class="scrollToTop-btn">
+      <i class="fas fa-angle-up"></i>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <a href="/" class="logo"><i class="fas fa-shield-alt"></i> VASUPILLA</a>
+        <div id="menu" class="fas fa-bars"></div>
+        <nav class="navbar">
+            <ul>
+                <li><a class="active" href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="main" id="home">
+      <div class="content">
+        <h2>Hello, I'm<br><span>Vasu Pilla</span></h2>
+        <div class="animated-text">
+          <span id="typed-output"></span><span id="typed-cursor">|</span>
+        </div>
+        <a href="#projects" class="btn">See My Work</a>
+        <div class="media-icons">
+          <a href="mailto:Vasupilla2003@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://www.linkedin.com/in/pilla-vasu-a00019252" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="tel:+916305737356" title="Phone"><i class="fas fa-phone"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div class="title reveal">
+        <h2 class="section-title">About Me</h2>
+      </div>
+      <div class="content">
+        <div class="column col-left reveal">
+          <div class="img-card">
+            <img src="C:\Portfolio\Images\Vasu.jpg" alt="Vasu Pilla">
+            <i class="fas fa-user-shield"></i>
+          </div>
+        </div>
+        <div class="column col-right reveal">
+          <h2 class="content-title">Hey There! I'm Vasu Pilla</h2>
+          <p class="paragraph-text">
+            I am a Master of Computer Science student at Andhra University College of Engineering, Visakhapatnam. I hold a Certified Ethical Hacker (CEH-V13) certification from EC-Council and have hands-on experience gained through an internship at Cartel Software Private Limited, Hyderabad.
+            I have strong foundational skills in threat analysis, vulnerability assessment, and penetration testing. As a quick learner, I enjoy building controlled lab environments to study offensive techniques for defensive security research — always within authorized and ethical boundaries.
+          </p>
+          <a href="#contact" class="btn">Contact Me</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills" id="skills">
+      <div class="title reveal">
+        <h2 class="section-title">Technical Skills</h2>
+      </div>
+      <div class="content">
+        <div class="column col-left reveal">
+          <h2 class="content-title">My Skills and Experience</h2>
+          <p>
+            I hold a Master of Computer Science from Andhra University, specializing in Cybersecurity. My skill set spans security tools, networking, penetration testing, and malware analysis.
+            I have gained practical experience through an internship at Cartel Software Private Limited, Hyderabad, and hold a Certified Ethical Hacker (CEH-V13) certification from EC-Council (Nov 2025).
+            I am a quick learner who applies critical thinking effectively when tackling complex security challenges.
+          </p>
+          <br>
+          <a href="#contact" class="btn">Hire Me</a>
+        </div>
+        <div class="column col-right reveal">
+          <div class="bar">
+            <div class="info">
+              <span>Python</span>
+              <span>85%</span>
+            </div>
+            <div class="line python"></div>
+          </div>
+          <div class="bar">
+            <div class="info">
+              <span>Network Security (TCP/IP, DNS, VPN, Firewalls)</span>
+              <span>90%</span>
+            </div>
+            <div class="line netsec"></div>
+          </div>
+          <div class="bar">
+            <div class="info">
+              <span>Penetration Testing (Metasploit, Nmap, BurpSuite)</span>
+              <span>88%</span>
+            </div>
+            <div class="line pentest"></div>
+          </div>
+          <div class="bar">
+            <div class="info">
+              <span>Malware Analysis & Incident Response</span>
+              <span>80%</span>
+            </div>
+            <div class="line malware"></div>
+          </div>
+          <div class="bar">
+            <div class="info">
+              <span>SIEM Tools (Snort, Qualys, Nessus)</span>
+              <span>82%</span>
+            </div>
+            <div class="line siem"></div>
+          </div>
+          <div class="bar">
+            <div class="info">
+              <span>Operating Systems (Linux, Windows)</span>
+              <span>92%</span>
+            </div>
+            <div class="line os"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+      <div class="title reveal">
+        <h2 class="section-title">My Services</h2>
+        <p>
+          As a Certified Ethical Hacker and cybersecurity enthusiast, I offer expertise in penetration testing, vulnerability assessment, malware analysis, and network security. My MCS background combined with hands-on lab experience lets me apply both theory and practical skills to secure digital infrastructure.
+        </p>
+      </div>
+      <div class="content">
+        <div class="card reveal">
+          <div class="service-icon">
+            <i class="fas fa-user-secret"></i>
+          </div>
+          <div class="info">
+            <h3>Ethical Hacking</h3>
+            <p>Certified Ethical Hacker (CEH-V13) with experience in authorized penetration testing, vulnerability assessment, and offensive security techniques used to identify and remediate weaknesses in systems and networks.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="service-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="info">
+            <h3>Malware Analysis</h3>
+            <p>Hands-on experience analyzing malware behavior, network patterns, and system impact using controlled lab environments with Metasploit, Wireshark, and behavior monitoring tools for defensive research.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="service-icon">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <div class="info">
+            <h3>Network Security</h3>
+            <p>Strong knowledge of TCP/IP, DNS, VPN, Firewalls, and DHCP. Experienced in network packet inspection, traffic monitoring, and detecting anomalous activity using Snort IDS/IPS and Wireshark.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects" id="projects">
+      <div class="max-width">
+          <h2 class="proj">My Projects</h2>
+          <div class="carousel owl-carousel">
+              <div class="card">
+                  <div class="box">
+                      <div class="text"><u>Python Keylogger Analysis & Detection Lab</u></div>
+                      <p>Built a controlled lab using Parrot OS (attacker) and Windows 10 (endpoint) to study Python-based keylogging techniques. Implemented keylogger.py and receiver.py to analyze keystroke capture and remote transmission for defensive research.</p>
+                  </div>
+              </div>
+              <div class="card">
+                  <div class="box">
+                      <div class="text"><u>Mobile RedTeam Lab</u></div>
+                      <p>Transformed a Realme 13 Pro+ 5G (Android 15, Non-Rooted) into a portable cybersecurity training environment using Termux + Kali NetHunter CLI for ethical and authorized penetration testing practice.</p>
+                  </div>
+              </div>
+              <div class="card">
+                  <div class="box">
+                      <div class="text"><u>VirtualBox Penetration Testing Lab</u></div>
+                      <p>Set up a virtualized lab with Kali Linux, Metasploitable2 & 3, Windows 10, and Parrot OS to practice penetration testing, vulnerability analysis, and cross-platform security testing in a controlled and secure environment.</p>
+                  </div>
+              </div>
+              <div class="card">
+                  <div class="box">
+                      <div class="text"><u>Malware Analysis Lab</u></div>
+                      <p>Configured a malware analysis environment with Windows 10 as the target and Kali Linux as the attacker. Used Metasploit for reverse TCP payload analysis and Wireshark for traffic monitoring and MITM attack behavior study.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="title reveal">
+        <h2 class="section-title">Contact Me</h2>
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="card reveal">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="info">
+              <h3>Address</h3>
+              <span>Visakhapatnam, India</span>
+            </div>
+          </div>
+          <div class="card reveal">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="info">
+              <h3>Phone</h3>
+              <span>+91 6305737356</span>
+            </div>
+          </div>
+          <div class="card reveal">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="info">
+              <h3>Email Address</h3>
+              <span>Vasupilla2003@gmail.com</span>
+            </div>
+          </div>
+          <div class="card reveal">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </div>
+            <div class="info">
+              <h3>LinkedIn</h3>
+              <span>linkedin.com/in/pilla-vasu-a00019252</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <span class="footer-title">VASUPILLA</span>
+      <p>This is my Digital portfolio &copy; 2025. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      /* Typed Roles */
+      const roles = ['Certified Ethical Hacker', 'Penetration Tester', 'Security Analyst', 'Python Developer', 'Malware Analyst'];
+      let ri = 0, ci = 0, deleting = false;
+      const el = document.getElementById('typed-output');
+      function type() {
+        const cur = roles[ri];
+        if (deleting) {
+          el.textContent = cur.substring(0, ci--);
+          if (ci < 0) { deleting = false; ri = (ri+1)%roles.length; setTimeout(type,400); return; }
+        } else {
+          el.textContent = cur.substring(0, ci++);
+          if (ci > cur.length) { deleting = true; setTimeout(type,1800); return; }
+        }
+        setTimeout(type, deleting ? 50 : 80);
+      }
+      type();
+
+      /* Owl Carousel */
+      $(document).ready(function(){
+        $('.owl-carousel').owlCarousel({
+          loop: true, margin: 20, autoplay: true, autoplayTimeout: 3500,
+          responsive: { 0:{items:1}, 600:{items:2}, 1000:{items:3} }
+        });
+      });
+
+      /* Scroll Reveal */
+      const revEls = document.querySelectorAll('.reveal');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('active'); obs.unobserve(e.target); } });
+      }, {threshold:0.12});
+      revEls.forEach(r => obs.observe(r));
+
+      /* Skill bars */
+      const lines = document.querySelectorAll('.line');
+      const lObs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if(e.isIntersecting){ /* CSS handles width via class */ lObs.unobserve(e.target); } });
+      }, {threshold:0.3});
+      lines.forEach(l => lObs.observe(l));
+
+      /* Active nav */
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.navbar ul li a');
+      window.addEventListener('scroll', () => {
+        let cur = '';
+        sections.forEach(s => { if(window.scrollY >= s.offsetTop - 80) cur = s.id; });
+        navLinks.forEach(a => {
+          a.classList.remove('active');
+          if(a.getAttribute('href')==='#'+cur) a.classList.add('active');
+        });
+        document.querySelector('.scrollToTop-btn').classList.toggle('show', window.scrollY > 400);
+      });
+
+      /* Scroll to top */
+      document.querySelector('.scrollToTop-btn').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+      /* Mobile menu */
+      document.getElementById('menu').addEventListener('click', () => {
+        document.querySelector('.navbar').classList.toggle('open');
+      });
+    </script>
+</body>
+</html>
